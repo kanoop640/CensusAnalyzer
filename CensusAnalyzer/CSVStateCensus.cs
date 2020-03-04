@@ -19,14 +19,9 @@ namespace CensusAnalyzer
         /// <returns></returns>
         public int LoadCSVStateData()
         {
-            int count = 0;
             string[] str = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv");
-            IEnumerable<string> ele = str;
-            foreach (string line in ele)
-            {
-                count++;
-            }
-            return count;
+            return str.Length;
+
         }
     }
 }

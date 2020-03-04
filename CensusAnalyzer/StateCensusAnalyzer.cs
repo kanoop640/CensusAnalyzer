@@ -15,13 +15,20 @@ namespace CensusAnalyzer
         {
             try
             {
-                var data = File.ReadAllLines(path);
-                return data.Length;
+                int count = 0;
+                string[] str = File.ReadAllLines(path);
+                IEnumerable<string> ele = str;
+                foreach (string line in ele)
+                {
+                    count++;
+                }
+                return count;
             }
             catch (FileNotFoundException)
             {
                 throw new CensusAnalyzerException("File_Name_Incorrect");
             }
+
         }
     }
 }
