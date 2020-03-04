@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CensusAnalyzer", "CensusAnalyzer.csproj", "{1482C3E4-D5CB-47E8-A93B-9CCB96491490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CensusAnalyzer", "CensusAnalyzer.csproj", "{1482C3E4-D5CB-47E8-A93B-9CCB96491490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoodAnalyzer", "..\..\MoodAnalyzer\MoodAnalyzer\MoodAnalyzer.csproj", "{C6F9A703-6FB1-4404-A138-BFD3F2FDAB6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetExample", "C:\Users\Admin\source\repos\DotNetExample\DotNetExample.csproj", "{6D0ADC77-498B-416A-B354-B866AE3FCA53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CensusAnalyzerNUnitTest", "..\CensusAnalyzerNUnitTest\CensusAnalyzerNUnitTest.csproj", "{B0B5EC49-AC41-4928-84D3-135DA7CC488B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTesting", "..\..\MoodAnalyzer\NUnitTesting\NUnitTesting.csproj", "{64D4B14C-68C2-4425-9199-BD8241546100}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{1482C3E4-D5CB-47E8-A93B-9CCB96491490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1482C3E4-D5CB-47E8-A93B-9CCB96491490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1482C3E4-D5CB-47E8-A93B-9CCB96491490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F9A703-6FB1-4404-A138-BFD3F2FDAB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F9A703-6FB1-4404-A138-BFD3F2FDAB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F9A703-6FB1-4404-A138-BFD3F2FDAB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F9A703-6FB1-4404-A138-BFD3F2FDAB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0ADC77-498B-416A-B354-B866AE3FCA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0ADC77-498B-416A-B354-B866AE3FCA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0ADC77-498B-416A-B354-B866AE3FCA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0ADC77-498B-416A-B354-B866AE3FCA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B5EC49-AC41-4928-84D3-135DA7CC488B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B5EC49-AC41-4928-84D3-135DA7CC488B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B5EC49-AC41-4928-84D3-135DA7CC488B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B5EC49-AC41-4928-84D3-135DA7CC488B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D4B14C-68C2-4425-9199-BD8241546100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D4B14C-68C2-4425-9199-BD8241546100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D4B14C-68C2-4425-9199-BD8241546100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D4B14C-68C2-4425-9199-BD8241546100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

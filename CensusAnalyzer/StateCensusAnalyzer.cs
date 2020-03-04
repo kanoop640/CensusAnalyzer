@@ -9,7 +9,7 @@ namespace CensusAnalyzer
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    class StateCensusAnalyzer
+    public class StateCensusAnalyzer
     {
         public int LoadStateData()
         {

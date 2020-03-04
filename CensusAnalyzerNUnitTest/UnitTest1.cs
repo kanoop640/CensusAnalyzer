@@ -1,18 +1,20 @@
 using NUnit.Framework;
-
+using CensusAnalyzer;
 namespace CensusAnalyzerNUnitTest
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+        StateCensusAnalyzer stateData = new StateCensusAnalyzer();
+        CSVStateCensus csvdata = new CSVStateCensus();
 
+        /// <summary>
+        /// Checks the item in CSV file.
+        /// TestCase-1.1
+        /// </summary>
         [Test]
-        public void Test1()
+        public void CheckItemInCSVFileFromTwoClass()
         {
-            Assert.Pass();
+            Assert.AreEqual(csvdata.LoadCSVStateData(), stateData.LoadStateData());
         }
     }
 }
