@@ -6,6 +6,7 @@ namespace CensusAnalyzerNUnitTest
     {
         StateCensusAnalyzer stateData = new StateCensusAnalyzer();
         CSVStateCensus csvdata = new CSVStateCensus();
+        string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
 
         /// <summary>
         /// Checks the item in CSV file.
@@ -14,7 +15,17 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVFileFromTwoClass()
         {
-            Assert.AreEqual(csvdata.LoadCSVStateData(), stateData.LoadStateData());
+            Assert.AreEqual(csvdata.LoadCSVStateData(), stateData.LoadStateData(path));
+        }
+        /// <summary>
+        /// Wrongs the name of the file.
+        /// TestCase-1.2
+        /// </summary>
+        [Test]
+        public void WrongFileName()
+        {
+            var NoFile = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv"));
+            Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
     }
 }

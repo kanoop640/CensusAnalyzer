@@ -11,10 +11,17 @@ namespace CensusAnalyzer
     using System.Text;
     public class StateCensusAnalyzer
     {
-        public int LoadStateData()
+        public int LoadStateData(string path)
         {
-            var data = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv");
-            return data.Length;
+            try
+            {
+                var data = File.ReadAllLines(path);
+                return data.Length;
+            }
+            catch (FileNotFoundException)
+            {
+                throw new CensusAnalyzerException("File_Name_Incorrect");
+            }
         }
     }
 }
