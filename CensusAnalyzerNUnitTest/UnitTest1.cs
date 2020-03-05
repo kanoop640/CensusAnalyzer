@@ -42,8 +42,8 @@ namespace CensusAnalyzerNUnitTest
         }
         /// <summary>
         /// When we read data form StateCensusData.csv and find that it's delemeter is not correct than
-        /// throw exception
-        /// TestCase-1.4
+        /// throw exception from StateCensusAnalyzer
+        /// TestCase-1.4 
         /// </summary>
         [Test]
         public void DelemeterError()
