@@ -46,11 +46,20 @@ namespace CensusAnalyzerNUnitTest
         /// TestCase-1.4 
         /// </summary>
         [Test]
-        public void DelemeterError()
+        public void DelimiterError()
         {
             var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvFilePath, '.'));
-            Assert.AreEqual("Wrong_Delemeter", WrongDelemeter.GetMessage);
+            Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
-
+        /// <summary>
+        /// When StateCensusData.csv file have no header
+        /// TestCase - 1.5
+        /// </summary>
+        [Test]
+        public void NoHeader()
+        {
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvFileCopyPath));
+            Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
+        }
     }
 }

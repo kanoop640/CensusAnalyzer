@@ -34,14 +34,16 @@ namespace CensusAnalyzer
                     string[] csvLine = line.Split(delimiter);
                     if (csvLine.Length != 4 && csvLine.Length != 2)
                     {
-                        throw new CensusAnalyzerException("Wrong_Delemeter");
+                        throw new CensusAnalyzerException("Wrong_Delimiter");
                     }
+                }
+                if (str[0] != "State,Population,AreaInSqKm,DensityPerSqKm")
+                {
+                    throw new CensusAnalyzerException("NO_HEADER");
                 }
                 IEnumerable<string> ele = str;
                 foreach (string line in ele)
                 {
-                    if (line.Contains("."))
-                        throw new CensusAnalyzerException("Wrong_Delemeter");
                     count++;
                 }
                 return count;
