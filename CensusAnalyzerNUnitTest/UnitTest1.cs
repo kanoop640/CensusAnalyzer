@@ -1,13 +1,17 @@
-using NUnit.Framework;
-using CensusAnalyzer;
+// <copyright file="Tests.cs" company="Bridgelabz">
+//   Copyright © 2020 Company="BridgeLabz"
+// </copyright>
+// <creator name="Anoop kumar"/>
+// -----------------------------------------------------------------
 namespace CensusAnalyzerNUnitTest
 {
+    using NUnit.Framework;
+    using CensusAnalyzer;
     public class Tests
     {
         StateCensusAnalyzer stateData = new StateCensusAnalyzer();
         CSVStates csvdata = new CSVStates();
         string csvFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
-        string csvFileCopyPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData -Copy.csv";
         string csvWrongFileName = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv";
         string cscWrongFileExtension = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvee";
 
@@ -58,7 +62,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void NoHeader()
         {
-            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFileCopyPath));
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFilePath, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
         }
     }

@@ -19,7 +19,7 @@ namespace CensusAnalyzer
         /// StateCensusData.csv file
         /// </summary>
         /// <returns></returns>
-        public int LoadCSVStateData(string path, char delimiter = ',')
+        public int LoadCSVStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
             {
@@ -44,7 +44,7 @@ namespace CensusAnalyzer
                     throw new CensusAnalyzerException("Wrong_Delimiter");
                 }
             }
-            if (csvData[0] != "State,Population,AreaInSqKm,DensityPerSqKm")
+            if (!csvData[0].Equals(header))
             {
                 throw new CensusAnalyzerException("NO_HEADER");
             }
