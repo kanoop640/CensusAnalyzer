@@ -10,8 +10,12 @@ namespace CensusAnalyzer
     using System.IO;
     using System.Text;
     public class StateCensusAnalyzer
-    {
-        public int LoadStateData(string path)
+    {/// <summary>
+     /// Method for Loading data form StateCensus.csv File
+     /// </summary>
+     /// <param name="path"></param>
+     /// <returns></returns>
+        public int LoadStateData(string path, char delimiter = ',')
         {
             try
             {
@@ -23,12 +27,21 @@ namespace CensusAnalyzer
                 {
                     throw new CensusAnalyzerException("File_Name_Incorrect");
                 }
-
                 int count = 0;
                 string[] str = File.ReadAllLines(path);
+                foreach (string line in str)
+                {
+                    string[] csvLine = line.Split(delimiter);
+                    if (csvLine.Length != 4 && csvLine.Length != 2)
+                    {
+                        throw new CensusAnalyzerException("Wrong_Delemeter");
+                    }
+                }
                 IEnumerable<string> ele = str;
                 foreach (string line in ele)
                 {
+                    if (line.Contains("."))
+                        throw new CensusAnalyzerException("Wrong_Delemeter");
                     count++;
                 }
                 return count;
@@ -37,7 +50,6 @@ namespace CensusAnalyzer
             {
                 throw;
             }
-
         }
     }
 }
