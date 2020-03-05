@@ -19,7 +19,7 @@ namespace CensusAnalyzer
         /// StateCensusData.csv file
         /// </summary>
         /// <returns></returns>
-        public int LoadCSVStateData(string path)
+        public int LoadCSVStateData(string path, char delimiter = ',')
         {
             try
             {
@@ -27,6 +27,7 @@ namespace CensusAnalyzer
                     throw new CensusAnalyzerException("Wrong_File_Extension");
                 else if (!File.Exists(path))
                     throw new CensusAnalyzerException("File_Name_Incorrect");
+
             }
             catch (CensusAnalyzerException)
             {
@@ -35,6 +36,14 @@ namespace CensusAnalyzer
             }
             int count = 0;
             var csvData = File.ReadAllLines(path);
+            foreach (string line in csvData)
+            {
+                string[] csvLine = line.Split(delimiter);
+                if (csvLine.Length != 4 && csvLine.Length != 2)
+                {
+                    throw new CensusAnalyzerException("Wrong_Delimiter");
+                }
+            }
             IEnumerable<string> IterateCsvFile = csvData;
             foreach (string line in IterateCsvFile)
             {

@@ -48,7 +48,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void DelimiterError()
         {
-            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvFilePath, '.'));
+            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFilePath, '.'));
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
