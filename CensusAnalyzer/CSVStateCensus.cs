@@ -9,6 +9,8 @@ namespace CensusAnalyzer
     using System.Collections.Generic;
     using System.Text;
     using System.IO;
+    using CsvHelper;
+
     public class CSVStateCensus
     {
         /// <summary>
@@ -19,7 +21,8 @@ namespace CensusAnalyzer
         /// <returns></returns>
         public int LoadCSVStateData()
         {
-            string[] str = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv");
+            string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
+            string[] str = File.ReadAllLines(path);
             return str.Length;
 
         }

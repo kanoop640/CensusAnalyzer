@@ -27,5 +27,11 @@ namespace CensusAnalyzerNUnitTest
             var NoFile = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv"));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
+        [Test]
+        public void WrongFileExtension()
+        {
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData,csv"));
+            Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
+        }
     }
 }
