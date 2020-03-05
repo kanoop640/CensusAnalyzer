@@ -58,7 +58,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void NoHeader()
         {
-            var NoHead = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvFileCopyPath));
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFileCopyPath));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
         }
     }

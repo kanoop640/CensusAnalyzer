@@ -44,6 +44,10 @@ namespace CensusAnalyzer
                     throw new CensusAnalyzerException("Wrong_Delimiter");
                 }
             }
+            if (csvData[0] != "State,Population,AreaInSqKm,DensityPerSqKm")
+            {
+                throw new CensusAnalyzerException("NO_HEADER");
+            }
             IEnumerable<string> IterateCsvFile = csvData;
             foreach (string line in IterateCsvFile)
             {
