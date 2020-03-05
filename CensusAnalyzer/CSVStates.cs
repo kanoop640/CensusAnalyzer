@@ -21,6 +21,18 @@ namespace CensusAnalyzer
         /// <returns></returns>
         public int LoadCSVStateData(string path)
         {
+            try
+            {
+                if (!File.Exists(path))
+                {
+                    throw new CensusAnalyzerException("File_Name_Incorrect");
+                }
+            }
+            catch (CensusAnalyzerException)
+            {
+
+                throw;
+            }
             int count = 0;
             var csvData = File.ReadAllLines(path);
             IEnumerable<string> IterateCsvFile = csvData;

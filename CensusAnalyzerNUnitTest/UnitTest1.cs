@@ -27,7 +27,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileName()
         {
-            var NoFile = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvWrongFileName));
+            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvWrongFileName));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
