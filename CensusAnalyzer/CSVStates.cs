@@ -11,7 +11,7 @@ namespace CensusAnalyzer
     using System.IO;
     using CsvHelper;
 
-    public class CSVStateCensus
+    public class CSVStates
     {
         /// <summary>
         /// CSVs the data count.
@@ -19,12 +19,16 @@ namespace CensusAnalyzer
         /// StateCensusData.csv file
         /// </summary>
         /// <returns></returns>
-        public int LoadCSVStateData()
+        public int LoadCSVStateData(string path)
         {
-            string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
-            string[] str = File.ReadAllLines(path);
-            return str.Length;
-
+            int count = 0;
+            var csvData = File.ReadAllLines(path);
+            IEnumerable<string> IterateCsvFile = csvData;
+            foreach (string line in IterateCsvFile)
+            {
+                count++;
+            }
+            return count;
         }
     }
 }

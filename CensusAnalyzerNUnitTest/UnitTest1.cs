@@ -5,7 +5,7 @@ namespace CensusAnalyzerNUnitTest
     public class Tests
     {
         StateCensusAnalyzer stateData = new StateCensusAnalyzer();
-        CSVStateCensus csvdata = new CSVStateCensus();
+        CSVStates csvdata = new CSVStates();
         string csvFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
         string csvFileCopyPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData -Copy.csv";
         string csvWrongFileName = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv";
