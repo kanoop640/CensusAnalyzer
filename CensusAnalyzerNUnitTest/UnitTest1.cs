@@ -37,7 +37,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileExtension()
         {
-            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(cscWrongFileExtension));
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(cscWrongFileExtension));
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
         }
         /// <summary>

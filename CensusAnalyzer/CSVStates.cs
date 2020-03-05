@@ -23,10 +23,10 @@ namespace CensusAnalyzer
         {
             try
             {
-                if (!File.Exists(path))
-                {
+                if (Path.GetExtension(path) != ".csv")
+                    throw new CensusAnalyzerException("Wrong_File_Extension");
+                else if (!File.Exists(path))
                     throw new CensusAnalyzerException("File_Name_Incorrect");
-                }
             }
             catch (CensusAnalyzerException)
             {
