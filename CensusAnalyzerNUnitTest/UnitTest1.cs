@@ -18,7 +18,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVFileFromTwoClass()
         {
-            Assert.AreEqual(30, stateData.LoadStateData(csvFilePath));
+            Assert.AreEqual(csvdata.LoadCSVStateData(csvFilePath), stateData.LoadStateData(csvFilePath));
         }
         /// <summary>
         /// Wrongs the name of the file.
