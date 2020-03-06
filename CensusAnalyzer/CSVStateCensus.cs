@@ -15,7 +15,7 @@ namespace CensusAnalyzer
      /// </summary>
      /// <param name="path"></param>
      /// <returns></returns>
-        public int LoadStateData(string path, char delimiter = ',')
+        public int LoadStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
             {
@@ -37,7 +37,7 @@ namespace CensusAnalyzer
                         throw new CensusAnalyzerException("Wrong_Delimiter");
                     }
                 }
-                if (str[0] != "State,Population,AreaInSqKm,DensityPerSqKm")
+                if (str[0] != header)
                 {
                     throw new CensusAnalyzerException("NO_HEADER");
                 }

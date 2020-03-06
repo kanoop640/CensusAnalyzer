@@ -59,30 +59,40 @@ namespace CensusAnalyzerNUnitTest
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
+        /// When StateCensusData.csv file have no header
+        ///UseCase1 TestCase - 1.5
+        /// </summary>
+        [Test]
+        public void NoHeaderInCSVStateCensus()
+        {
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvStateCensusData, ',', "AreaInSqKm,DensityPerSqKm"));
+            Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
+        }
+        /// <summary>
         /// Checks the item in CSV file.
         /// UseCase2 TestCase-1.1
         /// </summary>
         [Test]
-        public void CheckItemInCSVFileFromTwoClass()
+        public void CheckItemInCSVStaeFromStateCodeFile()
         {
             Assert.AreEqual(38, csvDelegate(csvStateCodeFile));
         }
         /// <summary>
         /// Wrongs the name of the file.
-        /// TestCase-1.2
+        /// UseCase2 TestCase-1.2
         /// </summary>
         [Test]
-        public void WrongFileName()
+        public void WrongFileNameInCSVStatesClass()
         {
             var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvStateCodeWrongFileName));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
         /// Wrong the file extension.
-        /// TestCase-1.3
+        /// UseCase2 TestCase-1.3
         /// </summary>
         [Test]
-        public void WrongFileExtension()
+        public void WrongFileExtensionInCSVStatesClass()
         {
             var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(cscStateCodeWrongFileExtension));
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
@@ -90,20 +100,20 @@ namespace CensusAnalyzerNUnitTest
         /// <summary>
         /// When we read data form StateCensusData.csv and find that it's delemeter is not correct than
         /// throw exception from StateCensusAnalyzer
-        /// TestCase-1.4 
+        /// UseCase2 TestCase-1.4 
         /// </summary>
         [Test]
-        public void DelimiterError()
+        public void DelimiterErrorInCSVStatesClassAndStateCodeFile()
         {
             var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvStateCodeFile, '.'));
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
         /// When StateCensusData.csv file have no header
-        /// TestCase - 1.5
+        /// UseCase2 TestCase - 1.5
         /// </summary>
         [Test]
-        public void NoHeader()
+        public void NoHeaderInCSVStatesClassAndStateCodeFile()
         {
             var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvStateCodeFile, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
