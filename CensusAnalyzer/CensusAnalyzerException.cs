@@ -8,9 +8,19 @@ namespace CensusAnalyzer
     using System;
     using System.Collections.Generic;
     using System.Text;
+    /// <summary>
+    /// Custome Exception class which inherit the exception class
+    /// </summary>
+    /// <seealso cref="System.Exception" />
     public class CensusAnalyzerException : Exception
     {
-        string message;
+        private readonly string message;
+        ///----------------------------------------------------------------------
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CensusAnalyzerException"/> class.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
+        /// -----------------------------------------------------------------
         public CensusAnalyzerException(string msg)
         {
             this.message = msg;
@@ -21,6 +31,6 @@ namespace CensusAnalyzer
         /// <value>
         /// The get message.
         /// </value>
-        public string GetMessage { get => message; }
+        public string GetMessage { get => this.message; }
     }
 }

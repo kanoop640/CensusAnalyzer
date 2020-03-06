@@ -9,8 +9,8 @@ namespace CensusAnalyzerNUnitTest
     using CensusAnalyzer;
     public class Tests
     {
+        CSVStateDelegate csvDelegate = new CSVStateDelegate(CSVStates.LoadCSVStateData);
         StateCensusAnalyzer stateData = new StateCensusAnalyzer();
-        CSVStates csvdata = new CSVStates();
         string csvFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
         string csvWrongFileName = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv";
         string cscWrongFileExtension = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvee";
@@ -22,7 +22,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVFileFromTwoClass()
         {
-            Assert.AreEqual(csvdata.LoadCSVStateData(csvFilePath), stateData.LoadStateData(csvFilePath));
+            Assert.AreEqual(csvDelegate(csvFilePath), stateData.LoadStateData(csvFilePath));
         }
         /// <summary>
         /// Wrongs the name of the file.
@@ -31,7 +31,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileName()
         {
-            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvWrongFileName));
+            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvWrongFileName));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
@@ -41,7 +41,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileExtension()
         {
-            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(cscWrongFileExtension));
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(cscWrongFileExtension));
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void DelimiterError()
         {
-            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFilePath, '.'));
+            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvFilePath, '.'));
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void NoHeader()
         {
-            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvdata.LoadCSVStateData(csvFilePath, ',', "AreaInSqKm,DensityPerSqKm"));
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvDelegate(csvFilePath, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
         }
     }

@@ -9,8 +9,8 @@ namespace CensusAnalyzer
     using System.Collections.Generic;
     using System.Text;
     using System.IO;
-    using CsvHelper;
 
+    public delegate int CSVStateDelegate(string path, char delemeter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm");
     public class CSVStates
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace CensusAnalyzer
         /// StateCensusData.csv file
         /// </summary>
         /// <returns></returns>
-        public int LoadCSVStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
+        public static int LoadCSVStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
             {
