@@ -48,6 +48,17 @@ namespace CensusAnalyzerNUnitTest
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
         }
         /// <summary>
+        /// When we read data form StateCensusData.csv and find that it's delemeter is not correct than
+        /// throw exception from StateCensusAnalyzer
+        /// UseCase1 TestCase-1.4 
+        /// </summary>
+        [Test]
+        public void DelimiterErrorInCSVStateCensus()
+        {
+            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(csvStateCensusData, '.'));
+            Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
+        }
+        /// <summary>
         /// Checks the item in CSV file.
         /// UseCase2 TestCase-1.1
         /// </summary>
