@@ -38,6 +38,16 @@ namespace CensusAnalyzerNUnitTest
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
+        /// Wrong the file extension in CSVStateCensus  class.
+        /// UseCase 1 TestCase-1.3
+        /// </summary>
+        [Test]
+        public void WrongFileExtensionInCSVStateCensus()
+        {
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => stateData.LoadStateData(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvuu"));
+            Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
+        }
+        /// <summary>
         /// Checks the item in CSV file.
         /// UseCase2 TestCase-1.1
         /// </summary>
