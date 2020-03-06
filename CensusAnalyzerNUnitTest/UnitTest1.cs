@@ -7,22 +7,33 @@ namespace CensusAnalyzerNUnitTest
 {
     using NUnit.Framework;
     using CensusAnalyzer;
-    public class Tests
+    public class CensusAnalyserNUnitTest
     {
         CSVStateDelegate csvDelegate = new CSVStateDelegate(CSVStates.LoadCSVStateData);
-        StateCensusAnalyzer stateData = new StateCensusAnalyzer();
-        string csvFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
-        string csvWrongFileName = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusDat.csv";
-        string cscWrongFileExtension = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvee";
+        CSVStateCensus stateData = new CSVStateCensus();
+        StateCensusAnalyser csvdata = new CensusAnalyzer.StateCensusAnalyser();
+        string csvFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
+        string csvWrongFileName = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCod.csv";
+        string cscWrongFileExtension = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csvee";
+
 
         /// <summary>
         /// Checks the item in CSV file.
-        /// TestCase-1.1
+        /// UseCase1 TestCase-1.1
+        /// </summary>
+        [Test]
+        public void CheckItemInStateCensusAnalyzerClass()
+        {
+            Assert.AreEqual(csvdata.StateCensusAnalyserData(), stateData.LoadStateData(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv"));
+        }
+        /// <summary>
+        /// Checks the item in CSV file.
+        /// UseCase2 TestCase-1.1
         /// </summary>
         [Test]
         public void CheckItemInCSVFileFromTwoClass()
         {
-            Assert.AreEqual(csvDelegate(csvFilePath), stateData.LoadStateData(csvFilePath));
+            Assert.AreEqual(38, csvDelegate(csvFilePath));
         }
         /// <summary>
         /// Wrongs the name of the file.

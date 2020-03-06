@@ -10,7 +10,7 @@ namespace CensusAnalyzer
     using System.Text;
     using System.IO;
 
-    public delegate int CSVStateDelegate(string path, char delemeter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm");
+    public delegate int CSVStateDelegate(string path, char delemeter = ',', string header = "SrNo,State,Name,TIN,StateCode");
     public class CSVStates
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace CensusAnalyzer
             foreach (string line in csvData)
             {
                 string[] csvLine = line.Split(delimiter);
-                if (csvLine.Length != 4 && csvLine.Length != 2)
+                if (csvLine.Length != 4 && csvLine.Length != 5)
                 {
                     throw new CensusAnalyzerException("Wrong_Delimiter");
                 }
