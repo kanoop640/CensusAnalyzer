@@ -75,7 +75,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVStaeFromStateCodeFile()
         {
-            Assert.AreEqual(38, csvDelegate(csvStateCodeFile));
+            Assert.AreEqual(csvStateCensus.StateCodeData(), csvDelegate(csvStateCodeFile));
         }
         /// <summary>
         /// Wrongs the name of the file.

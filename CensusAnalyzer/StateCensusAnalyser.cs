@@ -17,5 +17,10 @@ namespace CensusAnalyzer
             var csvfiledata = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv");
             return csvfiledata.Length;
         }
+        public int StateCodeData()
+        {
+            var csvFileData = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv");
+            return csvFileData.Length;
+        }
     }
 }
