@@ -10,12 +10,10 @@ namespace CensusAnalyzerNUnitTest
 
     public class CensusAnalyserNUnitTest
     {
-        CSVStates state = new CSVStates();
         /// <summary>
         /// The CSVState delegate
         /// </summary>
         CSVStateDelegate csvStateDelegate = Factory.CSVStatesObject();
-
         /// <summary>
         /// stateData is object of CSVStateCensus class
         /// </summary>

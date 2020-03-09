@@ -71,10 +71,5 @@ namespace CensusAnalyzer
             }
             return count;
         }
-        public static CSVStateDelegate Delegate()
-        {
-            CSVStates cSVStates = new CSVStates();
-            return new CSVStateDelegate(cSVStates.OperationOnCSVFIle);
-        }
     }
 }

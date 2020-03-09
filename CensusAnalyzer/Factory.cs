@@ -12,7 +12,12 @@ namespace CensusAnalyzer
         }
         public static CSVStateDelegate CSVStatesObject()
         {
-            return CSVStates.Delegate();
+            return Factory.Delegate();
+        }
+        public static CSVStateDelegate Delegate()
+        {
+            CSVStates cSVStates = new CSVStates();
+            return new CSVStateDelegate(cSVStates.OperationOnCSVFIle);
         }
     }
 }
