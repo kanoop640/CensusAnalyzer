@@ -11,16 +11,32 @@ namespace CensusAnalyzer
     using System.IO;
 
     public delegate int CSVStateDelegate(string path, char delemeter = ',', string header = "SrNo,State,Name,TIN,StateCode");
-    public class CSVStates
+    /// <summary>
+    /// It is CSVState class which read StateCode.csv file.
+    /// It inherit from interface ICSVBuilder
+    /// </summary>
+    /// <seealso cref="CensusAnalyzer.ICSVBuilder" />
+    public class CSVStates : ICSVBuilder
     {
         /// <summary>
-        /// CSVs the data count.
-        /// which return the number of data which it reads form 
-        /// StateCensusData.csv file
+        /// Operations the on CSVF ile.
         /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <param name="header">The header.</param>
         /// <returns></returns>
-        public static int LoadCSVStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
+        /// <exception cref="CensusAnalyzerException">
+        /// Wrong_File_Extension
+        /// or
+        /// File_Name_Incorrect
+        /// or
+        /// Wrong_Delimiter
+        /// or
+        /// NO_HEADER
+        /// </exception>
+        public int OperationOnCSVFIle(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
+
             try
             {
                 if (Path.GetExtension(path) != ".csv")
@@ -54,6 +70,11 @@ namespace CensusAnalyzer
                 count++;
             }
             return count;
+        }
+        public static CSVStateDelegate Delegate()
+        {
+            CSVStates cSVStates = new CSVStates();
+            return new CSVStateDelegate(cSVStates.OperationOnCSVFIle);
         }
     }
 }

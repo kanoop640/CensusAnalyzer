@@ -12,15 +12,10 @@ namespace CensusAnalyzer
 {
     public class StateCensusAnalyser
     {
-        public int StateCensusAnalyserData()
+        public int CSVFileData(string path)
         {
-            var csvfiledata = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv");
+            var csvfiledata = File.ReadAllLines(path);
             return csvfiledata.Length;
-        }
-        public int StateCodeData()
-        {
-            var csvFileData = File.ReadAllLines(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv");
-            return csvFileData.Length;
         }
     }
 }

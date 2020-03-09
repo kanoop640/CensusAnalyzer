@@ -9,13 +9,9 @@ namespace CensusAnalyzer
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    public class CSVStateCensus
-    {/// <summary>
-     /// Method for Loading data form StateCensus.csv File
-     /// </summary>
-     /// <param name="path"></param>
-     /// <returns></returns>
-        public int LoadStateData(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
+    public class CSVStateCensus : ICSVBuilder
+    {
+        public int OperationOnCSVFIle(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
             {
