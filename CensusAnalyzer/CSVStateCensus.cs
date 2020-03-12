@@ -13,6 +13,7 @@ namespace CensusAnalyzer
     {
         public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
+            List<string> lists = new List<string>();
             if (Path.GetExtension(path) != ".csv")
             {
                 throw new CensusAnalyzerException("Wrong_File_Extension");
@@ -21,10 +22,10 @@ namespace CensusAnalyzer
             {
                 throw new CensusAnalyzerException("File_Name_Incorrect");
             }
-            int count = 0;
             string[] str = File.ReadAllLines(path);
             foreach (string line in str)
             {
+                lists.Add(line);
                 string[] csvLine = line.Split(delimiter);
                 if (csvLine.Length != 4 && csvLine.Length != 2)
                 {
@@ -35,12 +36,8 @@ namespace CensusAnalyzer
             {
                 throw new CensusAnalyzerException("NO_HEADER");
             }
-            IEnumerable<string> ele = str;
-            foreach (string line in ele)
-            {
-                count++;
-            }
-            return count;
+
+            return lists.Count;
         }
     }
 }
