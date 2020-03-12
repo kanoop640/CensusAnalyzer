@@ -11,7 +11,7 @@ namespace CensusAnalyzer
     using System.Text;
     public class CSVStateCensus : ICSVBuilder
     {
-        public int OperationOnCSVFIle(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
+        public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
             try
             {

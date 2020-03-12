@@ -6,18 +6,13 @@ namespace CensusAnalyzer
 {
     public class Factory
     {
-        public static CSVStateCensus StateCensusObject()
+        public static ICSVBuilder StateCensusObject()
         {
             return new CSVStateCensus();
         }
-        public static CSVStateDelegate CSVStatesObject()
+        public static ICSVBuilder CSVStateCode()
         {
-            return Factory.Delegate();
-        }
-        public static CSVStateDelegate Delegate()
-        {
-            CSVStates cSVStates = new CSVStates();
-            return new CSVStateDelegate(cSVStates.OperationOnCSVFIle);
+            return new CSVStates();
         }
     }
 }

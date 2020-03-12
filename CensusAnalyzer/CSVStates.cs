@@ -10,7 +10,6 @@ namespace CensusAnalyzer
     using System.Text;
     using System.IO;
 
-    public delegate int CSVStateDelegate(string path, char delemeter = ',', string header = "SrNo,State,Name,TIN,StateCode");
     /// <summary>
     /// It is CSVState class which read StateCode.csv file.
     /// It inherit from interface ICSVBuilder
@@ -34,7 +33,7 @@ namespace CensusAnalyzer
         /// or
         /// NO_HEADER
         /// </exception>
-        public int OperationOnCSVFIle(string path, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
+        public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
 
             try

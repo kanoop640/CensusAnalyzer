@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CensusAnalyzer
 {
-    interface ICSVBuilder
+    public interface ICSVBuilder
     {
         public int OperationOnCSVFIle(string path, char delemitier, string header);
     }
