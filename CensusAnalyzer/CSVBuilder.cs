@@ -10,8 +10,16 @@ namespace CensusAnalyzer
     {
         public int GetCSVBuilder(ICSVBuilder obj, string path, char delimiter = ',', string header = "")
         {
-            int result = obj.OperationOnCSVFIle(path, delimiter, header);
-            return result;
+            try
+            {
+                int result = obj.OperationOnCSVFIle(path, delimiter, header);
+                return result;
+            }
+            catch (CensusAnalyzerException)
+            {
+
+                throw;
+            }
         }
     }
 }

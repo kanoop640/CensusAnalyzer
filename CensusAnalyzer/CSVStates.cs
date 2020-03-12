@@ -36,19 +36,10 @@ namespace CensusAnalyzer
         public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
 
-            try
-            {
-                if (Path.GetExtension(path) != ".csv")
-                    throw new CensusAnalyzerException("Wrong_File_Extension");
-                else if (!File.Exists(path))
-                    throw new CensusAnalyzerException("File_Name_Incorrect");
-
-            }
-            catch (CensusAnalyzerException)
-            {
-
-                throw;
-            }
+            if (Path.GetExtension(path) != ".csv")
+                throw new CensusAnalyzerException("Wrong_File_Extension");
+            else if (!File.Exists(path))
+                throw new CensusAnalyzerException("File_Name_Incorrect");
             int count = 0;
             var csvData = File.ReadAllLines(path);
             foreach (string line in csvData)
