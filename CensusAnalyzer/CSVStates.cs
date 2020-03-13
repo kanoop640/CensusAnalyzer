@@ -58,5 +58,16 @@ namespace CensusAnalyzer
 
             return lists.Count;
         }
+        public void CSVStateCodeJsonDataLoad()
+        {
+            string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
+            string csvData = File.ReadAllText(path);
+            StringBuilder stringBuilder = new StringBuilder();
+            using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
+            {
+                using (var data = new ChoJSONWriter(stringBuilder)) data.Write(jsonDataValue);
+            }
+            File.WriteAllText(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json", stringBuilder.ToString());
+        }
     }
 }

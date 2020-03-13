@@ -6,6 +6,54 @@
   "StateCode": "AN"
  },
  {
+  "SrNo": 2,
+  "State Name": "Andhra Pradesh",
+  "TIN": 28,
+  "StateCode": "AP"
+ },
+ {
+  "SrNo": 3,
+  "State Name": "Andhra Pradesh New",
+  "TIN": 37,
+  "StateCode": "AD"
+ },
+ {
+  "SrNo": 4,
+  "State Name": "Arunachal Pradesh",
+  "TIN": 12,
+  "StateCode": "AR"
+ },
+ {
+  "SrNo": 5,
+  "State Name": "Assam",
+  "TIN": 18,
+  "StateCode": "AS"
+ },
+ {
+  "SrNo": 6,
+  "State Name": "Bihar",
+  "TIN": 10,
+  "StateCode": "BH"
+ },
+ {
+  "SrNo": 7,
+  "State Name": "Chandigarh",
+  "TIN": 4,
+  "StateCode": "CH"
+ },
+ {
+  "SrNo": 8,
+  "State Name": "Chattisgarh",
+  "TIN": 22,
+  "StateCode": "CT"
+ },
+ {
+  "SrNo": 9,
+  "State Name": "Dadra and Nagar Haveli",
+  "TIN": 26,
+  "StateCode": "DN"
+ },
+ {
   "SrNo": 10,
   "State Name": "Daman and Diu",
   "TIN": 25,
@@ -64,12 +112,6 @@
   "State Name": "Kerala",
   "TIN": 32,
   "StateCode": "KL"
- },
- {
-  "SrNo": 2,
-  "State Name": "Andhra Pradesh",
-  "TIN": 28,
-  "StateCode": "AP"
  },
  {
   "SrNo": 20,
@@ -132,12 +174,6 @@
   "StateCode": "PB"
  },
  {
-  "SrNo": 3,
-  "State Name": "Andhra Pradesh New",
-  "TIN": 37,
-  "StateCode": "AD"
- },
- {
   "SrNo": 30,
   "State Name": "Rajasthan",
   "TIN": 8,
@@ -184,41 +220,5 @@
   "State Name": "West Bengal",
   "TIN": 19,
   "StateCode": "WB"
- },
- {
-  "SrNo": 4,
-  "State Name": "Arunachal Pradesh",
-  "TIN": 12,
-  "StateCode": "AR"
- },
- {
-  "SrNo": 5,
-  "State Name": "Assam",
-  "TIN": 18,
-  "StateCode": "AS"
- },
- {
-  "SrNo": 6,
-  "State Name": "Bihar",
-  "TIN": 10,
-  "StateCode": "BH"
- },
- {
-  "SrNo": 7,
-  "State Name": "Chandigarh",
-  "TIN": 4,
-  "StateCode": "CH"
- },
- {
-  "SrNo": 8,
-  "State Name": "Chattisgarh",
-  "TIN": 22,
-  "StateCode": "CT"
- },
- {
-  "SrNo": 9,
-  "State Name": "Dadra and Nagar Haveli",
-  "TIN": 26,
-  "StateCode": "DN"
  }
 ]

@@ -11,6 +11,8 @@ namespace CensusAnalyzer
             Console.WriteLine("Welcome to CensusAnalyzer");
             CSVStateCensus csvStateCensusObject = new CSVStateCensus();
             csvStateCensusObject.CSVStateCensusJsonDataLoad();
+            CSVStates csvStateCodeObject = new CSVStates();
+            csvStateCodeObject.CSVStateCodeJsonDataLoad();
         }
     }
 }
