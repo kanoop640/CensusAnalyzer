@@ -3,6 +3,7 @@
 // </copyright>
 // <creator name="Anoop kumar"/>
 // -----------------------------------------------------------------
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,18 @@ namespace CensusAnalyzer
             var data = lines.Skip(1);
             var sorted = data.Select(line => new { SortKey = line.Split(',')[0], Line = line }).OrderBy(x => x.SortKey).Select(x => x.Line);
             File.WriteAllLines(path, lines.Take(1).Concat(sorted));
+        }
+        public string RetriveJsonFileFirstElementOnKey(string path, string key)
+        {
+            var jobj = File.ReadAllText(path);
+            var fileData = JArray.Parse(jobj);
+            return fileData[0][key].ToString();
+        }
+        public string RetriveLastElementOnKey(string path, string key)
+        {
+            var jobj = File.ReadAllText(path);
+            var fileData = JArray.Parse(jobj);
+            return fileData[fileData.Count - 1][key].ToString();
         }
     }
 }

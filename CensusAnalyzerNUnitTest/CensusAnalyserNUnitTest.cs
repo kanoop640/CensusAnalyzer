@@ -41,7 +41,7 @@ namespace CensusAnalyzerNUnitTest
         /// </summary>
         string csvStateCensusData = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
 
-
+        string jsonStateCensusPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCensusData.json";
         /// <summary>
         /// Checks the item in CSV file.
         /// UseCase1 TestCase-1.1
@@ -99,7 +99,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVStaeFromStateCodeFile()
         {
-            Assert.AreEqual(csvStateCensus.CSVFileData(csvStateCodeFile), csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, ',', "SrNo,State,Name,TIN,StateCode"));
+            Assert.AreEqual(csvStateCensus.CSVFileData(csvStateCodeFile), csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, ',', "SrNo,State Name,TIN,StateCode"));
         }
         /// <summary>
         /// Wrongs the name of the file.
@@ -141,6 +141,24 @@ namespace CensusAnalyzerNUnitTest
         {
             var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
+        }
+        /// <summary>
+        /// Check  first value check from state census data form StateCensus.json
+        /// UseCase 3 TestCase 3.1
+        /// </summary>
+        [Test]
+        public void JsonFirstValueCheckFromStateCensusData()
+        {
+            Assert.AreEqual("Andhra Pradesh", csvStateCensus.RetriveJsonFileFirstElementOnKey(jsonStateCensusPath, "State"));
+        }
+        /// <summary>
+        /// Check  last value check from state census data form StateCensus.json
+        /// UseCase 3 TestCase 3.2
+        /// </summary>
+        [Test]
+        public void JsonLastValueCheckFromStateCensusData()
+        {
+            Assert.AreEqual("West Bengal", csvStateCensus.RetriveLastElementOnKey(jsonStateCensusPath, "State"));
         }
     }
 }
