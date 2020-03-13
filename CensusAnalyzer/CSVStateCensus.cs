@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------
 namespace CensusAnalyzer
 {
+    using ChoETL;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -38,6 +39,19 @@ namespace CensusAnalyzer
             }
 
             return lists.Count;
+        }
+        public void CSVStateCensusJsonDataLoad()
+        {
+            StateCensusAnalyser obj = new StateCensusAnalyser();
+            string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
+            obj.SortingForCSVFile(path);
+            string csvData = File.ReadAllText(path);
+            StringBuilder stringBuilder = new StringBuilder();
+            using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
+            {
+                using (var data = new ChoJSONWriter(stringBuilder)) data.Write(jsonDataValue);
+            }
+            File.WriteAllText(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCensusData.json", stringBuilder.ToString());
         }
     }
 }

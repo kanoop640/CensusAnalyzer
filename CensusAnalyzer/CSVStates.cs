@@ -9,6 +9,7 @@ namespace CensusAnalyzer
     using System.Collections.Generic;
     using System.Text;
     using System.IO;
+    using ChoETL;
 
     /// <summary>
     /// It is CSVState class which read StateCode.csv file.
