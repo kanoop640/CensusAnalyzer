@@ -40,8 +40,14 @@ namespace CensusAnalyzerNUnitTest
         /// csvStateCensusData is the path of StateCensusData.csv file path
         /// </summary>
         string csvStateCensusData = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
-
+        /// <summary>
+        /// The json state census path
+        /// </summary>
         string jsonStateCensusPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCensusData.json";
+        /// <summary>
+        /// The state codejson path
+        /// </summary>
+        string stateCodejsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json";
         /// <summary>
         /// Checks the item in CSV file.
         /// UseCase1 TestCase-1.1
@@ -159,6 +165,24 @@ namespace CensusAnalyzerNUnitTest
         public void JsonLastValueCheckFromStateCensusData()
         {
             Assert.AreEqual("West Bengal", csvStateCensus.RetriveLastElementOnKey(jsonStateCensusPath, "State"));
+        }
+        /// <summary>
+        /// Jsons the first value check from json state code.
+        /// UseCase 4 TestCase 4.1
+        /// </summary>
+        [Test]
+        public void JsonFirstValueCheckFromStateCode()
+        {
+            Assert.AreEqual("AN", csvStateCensus.RetriveJsonFileFirstElementOnKey(stateCodejsonPath, "StateCode"));
+        }
+        /// <summary>
+        /// Jsons the last value check from json state code.
+        /// UseCase 4 TestCase 4.2
+        /// </summary>
+        [Test]
+        public void JsonLastValueCheckFromStateCode()
+        {
+            Assert.AreEqual("WB", csvStateCensus.RetriveLastElementOnKey(stateCodejsonPath, "StateCode"));
         }
     }
 }
