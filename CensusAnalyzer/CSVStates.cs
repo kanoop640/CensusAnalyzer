@@ -36,7 +36,8 @@ namespace CensusAnalyzer
         /// </exception>
         public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
-            List<string> lists = new List<string>();
+            int key = 1;
+            Dictionary<int, string> map = new Dictionary<int, string>();
             if (Path.GetExtension(path) != ".csv")
                 throw new CensusAnalyzerException("Wrong_File_Extension");
             else if (!File.Exists(path))
@@ -44,7 +45,8 @@ namespace CensusAnalyzer
             var csvData = File.ReadAllLines(path);
             foreach (string line in csvData)
             {
-                lists.Add(line);
+                map.Add(key, line);
+                key++;
                 string[] csvLine = line.Split(delimiter);
                 if (csvLine.Length != 4 && csvLine.Length != 5)
                 {
@@ -56,7 +58,7 @@ namespace CensusAnalyzer
                 throw new CensusAnalyzerException("NO_HEADER");
             }
 
-            return lists.Count;
+            return map.Count;
         }
         public void CSVStateCodeJsonDataLoad()
         {
