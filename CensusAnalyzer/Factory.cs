@@ -6,11 +6,7 @@ namespace CensusAnalyzer
 {
     public class Factory
     {
-        public static ICSVBuilder StateCensusObject()
-        {
-            return new CSVStateCensus();
-        }
-        public static ICSVBuilder CSVStateCode()
+        public static ICSVBuilder CSVStatesObject()
         {
             return new CSVStates();
         }

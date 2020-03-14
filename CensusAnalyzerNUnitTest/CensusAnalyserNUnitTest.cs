@@ -23,7 +23,7 @@ namespace CensusAnalyzerNUnitTest
         /// The csvStateCensus is the object of StateCensusAnalyser class
         /// which return the number of records in StateCensusData.csv file
         /// </summary>
-        StateCensusAnalyser csvStateCensus = new StateCensusAnalyser();
+        StateCensusAnalyser csvStateCensusAnalyser = new StateCensusAnalyser();
         /// <summary>
         /// csvStateCodeFile is the path of StateCode.csv file
         /// </summary>
@@ -49,53 +49,54 @@ namespace CensusAnalyzerNUnitTest
         /// </summary>
         string stateCodejsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json";
         /// <summary>
-        /// Checks the item in CSV file.
+        /// Checks the item in CSV file. Using CSVStates.cs class.
         /// UseCase1 TestCase-1.1
         /// </summary>
         [Test]
         public void CheckItemInStateCensusAnalyzerClass()
         {
-            Assert.AreEqual(csvStateCensus.CSVFileData(csvStateCensusData), csvBuilder.GetCSVBuilder(Factory.StateCensusObject(), csvStateCensusData, ',', "State,Population,AreaInSqKm,DensityPerSqKm"));
+            Assert.AreEqual(csvStateCensusAnalyser.CSVFileData(csvStateCensusData), csvBuilder.GetCSVBuilder(Factory.CSVStatesObject(), csvStateCensusData, ',', "State,Population,AreaInSqKm,DensityPerSqKm"));
         }
         /// <summary>
-        /// Wrongs the file name in CSVstatecensus Class and StateCensus.csv file.
+        /// Wrongs the file name in CSVstates Class and StateCensus.csv file.
         /// UseCase1 TestCase 1.2
         /// </summary>
         [Test]
         public void WrongFileNameInCSVStateCensus()
         {
-            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.StateCensusObject(), @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusata.csv"));
+            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.CSVStatesObject(), @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusata.csv"));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
-        /// Wrong the file extension in CSVStateCensus  class.
+        /// Wrong the file extension in CSVStates  class.
         /// UseCase 1 TestCase-1.3
         /// </summary>
         [Test]
         public void WrongFileExtensionInCSVStateCensus()
         {
-            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.StateCensusObject(), @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvuu"));
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.CSVStatesObject(), @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csvuu"));
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
         }
         /// <summary>
         /// When we read data form StateCensusData.csv and find that it's delemeter is not correct than
-        /// throw exception from StateCensusAnalyzer
+        /// throw exception from StateCensusAnalyzer.Using CSVStates.cs classs
         /// UseCase1 TestCase-1.4 
         /// </summary>
         [Test]
         public void DelimiterErrorInCSVStateCensus()
         {
-            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.StateCensusObject(), csvStateCensusData, '.'));
+            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.CSVStatesObject(), csvStateCensusData, '.'));
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
         /// When StateCensusData.csv file have no header
         ///UseCase1 TestCase - 1.5
+        ///Using CSVStates.cs classs
         /// </summary>
         [Test]
         public void NoHeaderInCSVStateCensus()
         {
-            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.StateCensusObject(), csvStateCensusData, ',', "AreaInSqKm,DensityPerSqKm"));
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvBuilder.GetCSVBuilder(Factory.CSVStatesObject(), csvStateCensusData, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
         }
         /// <summary>
@@ -105,7 +106,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void CheckItemInCSVStaeFromStateCodeFile()
         {
-            Assert.AreEqual(csvStateCensus.CSVFileData(csvStateCodeFile), csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, ',', "SrNo,State Name,TIN,StateCode"));
+            Assert.AreEqual(csvStateCensusAnalyser.CSVFileData(csvStateCodeFile), csvCodeDelgate(Factory.CSVStatesObject(), csvStateCodeFile, ',', "SrNo,State Name,TIN,StateCode"));
         }
         /// <summary>
         /// Wrongs the name of the file.
@@ -114,7 +115,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileNameInCSVStatesClass()
         {
-            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeWrongFileName));
+            var NoFile = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStatesObject(), csvStateCodeWrongFileName));
             Assert.AreEqual("File_Name_Incorrect", NoFile.GetMessage);
         }
         /// <summary>
@@ -124,7 +125,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void WrongFileExtensionInCSVStatesClass()
         {
-            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStateCode(), cscStateCodeWrongFileExtension));
+            var NoExtension = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStatesObject(), cscStateCodeWrongFileExtension));
             Assert.AreEqual("Wrong_File_Extension", NoExtension.GetMessage);
         }
         /// <summary>
@@ -135,7 +136,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void DelimiterErrorInCSVStatesClassAndStateCodeFile()
         {
-            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, '.'));
+            var WrongDelemeter = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStatesObject(), csvStateCodeFile, '.'));
             Assert.AreEqual("Wrong_Delimiter", WrongDelemeter.GetMessage);
         }
         /// <summary>
@@ -145,7 +146,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void NoHeaderInCSVStatesClassAndStateCodeFile()
         {
-            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStateCode(), csvStateCodeFile, ',', "AreaInSqKm,DensityPerSqKm"));
+            var NoHead = Assert.Throws<CensusAnalyzerException>(() => csvCodeDelgate(Factory.CSVStatesObject(), csvStateCodeFile, ',', "AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual("NO_HEADER", NoHead.GetMessage);
         }
         /// <summary>
@@ -155,7 +156,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void JsonFirstValueCheckFromStateCensusData()
         {
-            Assert.AreEqual("Andhra Pradesh", csvStateCensus.RetriveJsonFileFirstElementOnKey(jsonStateCensusPath, "State"));
+            Assert.AreEqual("Andhra Pradesh", csvStateCensusAnalyser.RetriveJsonFileFirstElementOnKey(jsonStateCensusPath, "State"));
         }
         /// <summary>
         /// Check  last value check from state census data form StateCensus.json
@@ -164,7 +165,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void JsonLastValueCheckFromStateCensusData()
         {
-            Assert.AreEqual("West Bengal", csvStateCensus.RetriveLastElementOnKey(jsonStateCensusPath, "State"));
+            Assert.AreEqual("West Bengal", csvStateCensusAnalyser.RetriveLastElementOnKey(jsonStateCensusPath, "State"));
         }
         /// <summary>
         /// Jsons the first value check from json state code.
@@ -173,7 +174,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void JsonFirstValueCheckFromStateCode()
         {
-            Assert.AreEqual("AN", csvStateCensus.RetriveJsonFileFirstElementOnKey(stateCodejsonPath, "StateCode"));
+            Assert.AreEqual("AN", csvStateCensusAnalyser.RetriveJsonFileFirstElementOnKey(stateCodejsonPath, "StateCode"));
         }
         /// <summary>
         /// Jsons the last value check from json state code.
@@ -182,7 +183,7 @@ namespace CensusAnalyzerNUnitTest
         [Test]
         public void JsonLastValueCheckFromStateCode()
         {
-            Assert.AreEqual("WB", csvStateCensus.RetriveLastElementOnKey(stateCodejsonPath, "StateCode"));
+            Assert.AreEqual("WB", csvStateCensusAnalyser.RetriveLastElementOnKey(stateCodejsonPath, "StateCode"));
         }
     }
 }

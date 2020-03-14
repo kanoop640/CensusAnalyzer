@@ -8,11 +8,14 @@ namespace CensusAnalyzer
     {
         static void Main(string[] args)
         {
+            string csvStateCensusPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
+            string csvStateCensusJsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCensusData.json";
+            string csvStateCodePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
+            string csvStateCodeJsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json";
             Console.WriteLine("Welcome to CensusAnalyzer");
-            CSVStateCensus csvStateCensusObject = new CSVStateCensus();
-            csvStateCensusObject.CSVStateCensusJsonDataLoad();
             CSVStates csvStateCodeObject = new CSVStates();
-            csvStateCodeObject.CSVStateCodeJsonDataLoad();
+            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCodePath, csvStateCodeJsonPath);
+            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCensusPath, csvStateCensusJsonPath);
         }
     }
 }

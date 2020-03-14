@@ -48,7 +48,7 @@ namespace CensusAnalyzer
                 map.Add(key, line);
                 key++;
                 string[] csvLine = line.Split(delimiter);
-                if (csvLine.Length != 4 && csvLine.Length != 5)
+                if (csvLine.Length != 4 && csvLine.Length != 2)
                 {
                     throw new CensusAnalyzerException("Wrong_Delimiter");
                 }
@@ -60,16 +60,15 @@ namespace CensusAnalyzer
 
             return map.Count;
         }
-        public void CSVStateCodeJsonDataLoad()
+        public void CSVStateCodeJsonDataLoad(string source, string destination)
         {
-            string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
-            string csvData = File.ReadAllText(path);
+            string csvData = File.ReadAllText(source);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
             {
                 using (var data = new ChoJSONWriter(stringBuilder)) data.Write(jsonDataValue);
             }
-            File.WriteAllText(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json", stringBuilder.ToString());
+            File.WriteAllText(destination, stringBuilder.ToString());
         }
     }
 }
