@@ -14,8 +14,8 @@ namespace CensusAnalyzer
             string csvStateCodeJsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCode.json";
             Console.WriteLine("Welcome to CensusAnalyzer");
             CSVStates csvStateCodeObject = new CSVStates();
-            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCodePath, csvStateCodeJsonPath);
-            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCensusPath, csvStateCensusJsonPath);
+            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCodePath, csvStateCodeJsonPath, 1);
+            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCensusPath, csvStateCensusJsonPath, 1);
         }
     }
 }

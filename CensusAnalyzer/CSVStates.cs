@@ -67,11 +67,12 @@ namespace CensusAnalyzer
                 map.Add(num, mapValue);
                 num++;
             }
-
             return map.Count;
         }
-        public void CSVStateCodeJsonDataLoad(string source, string destination)
+        public void CSVStateCodeJsonDataLoad(string source, string destination, int key)
         {
+            StateCensusAnalyser obj = new StateCensusAnalyser();
+            obj.SortingForCSVFile(source, key);
             string csvData = File.ReadAllText(source);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())

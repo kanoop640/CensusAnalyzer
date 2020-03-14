@@ -44,7 +44,7 @@ namespace CensusAnalyzer
         {
             StateCensusAnalyser obj = new StateCensusAnalyser();
             string path = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
-            obj.SortingForCSVFile(path);
+            obj.SortingForCSVFile(path, 0);
             string csvData = File.ReadAllText(path);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
