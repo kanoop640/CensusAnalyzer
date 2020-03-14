@@ -36,8 +36,7 @@ namespace CensusAnalyzer
         /// </exception>
         public int OperationOnCSVFIle(string path, char delimiter, string header)
         {
-            int key = 1;
-            Dictionary<int, string> map = new Dictionary<int, string>();
+            int num = 1;
             if (Path.GetExtension(path) != ".csv")
                 throw new CensusAnalyzerException("Wrong_File_Extension");
             else if (!File.Exists(path))
@@ -45,8 +44,6 @@ namespace CensusAnalyzer
             var csvData = File.ReadAllLines(path);
             foreach (string line in csvData)
             {
-                map.Add(key, line);
-                key++;
                 string[] csvLine = line.Split(delimiter);
                 if (csvLine.Length != 4 && csvLine.Length != 2)
                 {
@@ -56,6 +53,19 @@ namespace CensusAnalyzer
             if (!csvData[0].Equals(header))
             {
                 throw new CensusAnalyzerException("NO_HEADER");
+            }
+            Dictionary<int, Dictionary<string, string>> map = new Dictionary<int, Dictionary<string, string>>();
+            string[] key = csvData[0].Split(',');
+            for (int i = 1; i < csvData.Length; i++)
+            {
+                Dictionary<string, string> mapValue = new Dictionary<string, string>();
+                var val = csvData[i].Split(',');
+                mapValue.Add(key[0], val[0]);
+                mapValue.Add(key[1], val[1]);
+                mapValue.Add(key[2], val[2]);
+                mapValue.Add(key[3], val[3]);
+                map.Add(num, mapValue);
+                num++;
             }
 
             return map.Count;

@@ -17,7 +17,7 @@ namespace CensusAnalyzer
         public int CSVFileData(string path)
         {
             var csvfiledata = File.ReadAllLines(path);
-            return csvfiledata.Length;
+            return csvfiledata.Length - 1;
         }
         public void SortingForCSVFile(string path)
         {
