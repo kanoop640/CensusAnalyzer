@@ -81,5 +81,17 @@ namespace CensusAnalyzer
             File.WriteAllText(jsonDestination, stringBuilder.ToString());
             obj.SortingForCSVFile(jsonDestination, sortJson, key);
         }
+        public void CSVStateCodeJsonDataLoadForNum(string csvSource, string jsonDestination, string sortJson, string key)
+        {
+            StateCensusAnalyser obj = new StateCensusAnalyser();
+            string csvData = File.ReadAllText(csvSource);
+            StringBuilder stringBuilder = new StringBuilder();
+            using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
+            {
+                using (var data = new ChoJSONWriter(stringBuilder)) data.Write(jsonDataValue);
+            }
+            File.WriteAllText(jsonDestination, stringBuilder.ToString());
+            obj.SortingForCSVFileForNum(jsonDestination, sortJson, key);
+        }
     }
 }
