@@ -69,17 +69,17 @@ namespace CensusAnalyzer
             }
             return map.Count;
         }
-        public void CSVStateCodeJsonDataLoad(string source, string destination, int key)
+        public void CSVStateCodeJsonDataLoad(string csvSource, string jsonDestination, string sortJson, string key)
         {
             StateCensusAnalyser obj = new StateCensusAnalyser();
-            obj.SortingForCSVFile(source, key);
-            string csvData = File.ReadAllText(source);
+            string csvData = File.ReadAllText(csvSource);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
             {
                 using (var data = new ChoJSONWriter(stringBuilder)) data.Write(jsonDataValue);
             }
-            File.WriteAllText(destination, stringBuilder.ToString());
+            File.WriteAllText(jsonDestination, stringBuilder.ToString());
+            obj.SortingForCSVFile(jsonDestination, sortJson, key);
         }
     }
 }

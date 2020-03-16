@@ -3,6 +3,7 @@
 // </copyright>
 // <creator name="Anoop kumar"/>
 // -----------------------------------------------------------------
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,30 @@ namespace CensusAnalyzer
             var csvfiledata = File.ReadAllLines(path);
             return csvfiledata.Length - 1;
         }
-        public void SortingForCSVFile(string path, int key)
+        public int SortingForCSVFile(string Jsource, string Jdestination, string key)
         {
-            string[] lines = File.ReadAllLines(path);
-            var data = lines.Skip(1);
-            var sorted = data.Select(line => new { SortKey = line.Split(',')[key], Line = line }).OrderBy(x => x.SortKey).Select(x => x.Line);
-            File.WriteAllLines(path, lines.Take(1).Concat(sorted));
+            /* string[] lines = File.ReadAllLines(path);
+             var data = lines.Skip(1);
+             var sorted = data.Select(line => new { SortKey = line.Split(',')[key], Line = line }).OrderBy(x => x.SortKey).Select(x => x.Line);
+             File.WriteAllLines(path, lines.Take(1).Concat(sorted));*/
+            int count = 0;
+            var so = File.ReadAllText(Jsource);
+            JArray va = JArray.Parse(so);
+            for (int i = 0; i < va.Count - 1; i++)
+            {
+                for (int j = i + 1; j < va.Count; j++)
+                {
+                    if (va[i][key].ToString().CompareTo(va[j][key].ToString()) > 0)
+                    {
+                        var temp = va[i];
+                        va[i] = va[j];
+                        va[j] = temp;
+                        count++;
+                    }
+                }
+            }
+            File.WriteAllText(Jdestination, JsonConvert.SerializeObject(va, Formatting.Indented));
+            return count;
         }
         public string RetriveJsonFileFirstElementOnKey(string path, string key)
         {
