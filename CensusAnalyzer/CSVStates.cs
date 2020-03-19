@@ -18,6 +18,7 @@ namespace CensusAnalyzer
     /// <seealso cref="CensusAnalyzer.ICSVBuilder" />
     public class CSVStates : ICSVBuilder
     {
+        StateCensusAnalyser obj = new StateCensusAnalyser();
         /// <summary>
         /// Operations the on CSVF ile.
         /// </summary>
@@ -69,9 +70,8 @@ namespace CensusAnalyzer
             }
             return map.Count;
         }
-        public void CSVToJsonDataLoad(string csvSource, string jsonDestination, string sortJson, string key)
+        public void CSVToJson_Data_Load_And_Sort_String_key(string csvSource, string jsonDestination, string sortJson, string key)
         {
-            StateCensusAnalyser obj = new StateCensusAnalyser();
             string csvData = File.ReadAllText(csvSource);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
@@ -81,9 +81,8 @@ namespace CensusAnalyzer
             File.WriteAllText(jsonDestination, stringBuilder.ToString());
             obj.SortingForCSVFile(jsonDestination, sortJson, key);
         }
-        public void CSVToJsonDataLoadForNum(string csvSource, string jsonDestination, string sortJson, string key)
+        public void CSVToJson_Data_Load_And_Sort_By_Numeric_key(string csvSource, string jsonDestination, string sortJson, string key)
         {
-            StateCensusAnalyser obj = new StateCensusAnalyser();
             string csvData = File.ReadAllText(csvSource);
             StringBuilder stringBuilder = new StringBuilder();
             using (var jsonDataValue = ChoCSVReader.LoadText(csvData).WithFirstLineHeader())
@@ -92,6 +91,66 @@ namespace CensusAnalyzer
             }
             File.WriteAllText(jsonDestination, stringBuilder.ToString());
             obj.SortingForCSVFileForNum(jsonDestination, sortJson, key);
+        }
+        int count = 0;
+        List<string> la = new List<string>();
+        /// <summary>
+        /// Tests this instance.
+        /// It calls the merge function.
+        /// </summary>
+        public void IndianCsvFile()
+        {
+            string csvStateCensusPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
+            string csvStateCodePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
+            string IndianCSVFile = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\IndianCensusData.csv";
+            string indianCSVDataFileHeader = "SrNo,State Name,TIN,StateCode,Population,AreaInSqKm,DensityPerSqKm";
+            la.Add(indianCSVDataFileHeader);
+            string[] codeData = File.ReadAllLines(csvStateCodePath);
+            string[] censusData = File.ReadAllLines(csvStateCensusPath);
+            for (int i = 1; i < codeData.Length; i++)
+            {
+                count = 0;
+                string[] lines_code = codeData[i].Split(',');
+
+                for (int j = 1; j < censusData.Length; j++)
+                {
+                    string[] lines_census = censusData[j].Split(',');
+
+                    merge(codeData[i], censusData[j], lines_code, lines_census);
+                }
+
+                if (count == 0)
+                {
+                    // It adds new State that is not common
+                    // in both csv file;
+                    string sa = String.Concat(codeData[i] + ",0,0,0,0");
+                    la.Add(sa);
+
+                }
+            }
+            File.WriteAllLines(IndianCSVFile, la);
+        }
+        /// <summary>
+        /// It will merge the two csv file
+        /// with state name
+        /// Merges the specified code.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <param name="census">The census.</param>
+        /// <param name="lines_code">The lines code.</param>
+        /// <param name="lines_census">The lines census.</param>
+        public void merge(string _code, string _census, string[] lines_code, string[] lines_census)
+        {
+            string sf;
+            if (lines_code[1] == lines_census[0])
+            {
+                int a = _census.IndexOf(",");
+                sf = _census.Substring(a);
+                string s = String.Concat(_code, sf);
+                la.Add(s);
+                count = 1;
+            }
+
         }
     }
 }

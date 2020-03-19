@@ -8,8 +8,22 @@ using System.Text;
 
 namespace CensusAnalyzer
 {
-    class USCSVFile : IAdapter
+    class USCSVFile : IAdapter, IIndianCSVData, ICSVBuilder
     {
+        IIndianCSVData data;
+        ICSVBuilder build;
+        public USCSVFile(IIndianCSVData data)
+        {
+            this.data = data;
+        }
+        public USCSVFile(ICSVBuilder builder)
+        {
+            this.build = builder;
+        }
+        public USCSVFile()
+        {
+        }
+
 
         public int Operation_On_US_CSV_FIle(string path, char delimiter, string header)
         {
@@ -83,11 +97,11 @@ namespace CensusAnalyzer
             int count = 0;
             var so = File.ReadAllText(Jsource);
             JArray va = JArray.Parse(so);
-            for (int i = 0; i < va.Count - 1; i++)
+            for (int i = 0; i < va.Count; i++)
             {
                 for (int j = 0; j < va.Count; j++)
                 {
-                    if ((va[i][key]).CastTo<int>() < (va[j][key]).CastTo<int>())
+                    if ((int)va[i][key] > (int)va[j][key])
                     {
                         var temp = va[i];
                         va[i] = va[j];
@@ -100,5 +114,19 @@ namespace CensusAnalyzer
             return count;
         }
 
+        public List<Dictionary<string, object>> IndianCensusData()
+        {
+            return data.IndianCensusData();
+        }
+
+        public int OperationOnCSVFIle(string path, char delemitier, string header)
+        {
+            return this.build.OperationOnCSVFIle(path, delemitier, header);
+        }
+
+        public void IndianCsvFile()
+        {
+            build.IndianCsvFile();
+        }
     }
 }

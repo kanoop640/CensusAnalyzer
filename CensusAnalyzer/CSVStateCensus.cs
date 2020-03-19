@@ -53,5 +53,10 @@ namespace CensusAnalyzer
             }
             File.WriteAllText(@"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\StateCensusData.json", stringBuilder.ToString());
         }
+
+        public void IndianCsvFile()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace CensusAnalyzer
                 {
                     if (m > 0)
                     {
-                        lo.Add(dataHeader[m], "0");
+                        lo.Add(dataHeader[m], 0);
                     }
                     try
                     {
