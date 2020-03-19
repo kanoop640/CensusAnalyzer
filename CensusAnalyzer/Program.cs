@@ -8,6 +8,8 @@ namespace CensusAnalyzer
     {
         static void Main(string[] args)
         {
+            string IndianJsonFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\IndianSateCensusData.json";
+            string IndianJsonFileSortByPopulation = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\sortedIndianSateCensusDataByPapulation.json";
             string csvStateCensusPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.csv";
             string csvStateCensusJsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCensusData.json";
             string sortJsonCensusByState = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\sortStateCensusDataByState.json";
@@ -17,10 +19,17 @@ namespace CensusAnalyzer
             string sortJsonCode = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\sortStateCode.json";
             string csvStateCodePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.csv";
             string csvStateCodeJsonPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\StateCode.json";
+            string usDataPath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\USCensusData.csv";
+            string jUsData = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\USCensusData.csv";
+            string usCSVFilePath = @"D:\Anoop_kumar\CensusAnalyzer\CensusAnalyzer\File\USCensusData.csv";
+            string usCSVFileHeader = "State Id,State,Population,Housing units,Total area,Water area,Land area,Population Density,Housing Density";
             Console.WriteLine("Welcome to CensusAnalyzer");
+            Console.WriteLine("Ability to handle US State Census Data");
             CSVStates csvStateCodeObject = new CSVStates();
-            csvStateCodeObject.CSVStateCodeJsonDataLoad(csvStateCodePath, csvStateCodeJsonPath, sortJsonCode, "State Name");
-            csvStateCodeObject.CSVStateCodeJsonDataLoadForNum(csvStateCensusPath, csvStateCensusJsonPath, sortJsonCensusByArea, "AreaInSqKm");
+            USCSVFile usCSVFileObj = new USCSVFile();
+            csvStateCodeObject.CSVToJsonDataLoad(csvStateCodePath, csvStateCodeJsonPath, sortJsonCode, "State Name");
+            csvStateCodeObject.CSVToJsonDataLoadForNum(csvStateCensusPath, csvStateCensusJsonPath, sortJsonCensusByArea, "AreaInSqKm");
+            usCSVFileObj.Operation_On_US_CSV_FIle(usCSVFilePath, ',', usCSVFileHeader);
         }
     }
 }

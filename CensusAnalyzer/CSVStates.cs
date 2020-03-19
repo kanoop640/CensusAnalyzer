@@ -69,7 +69,7 @@ namespace CensusAnalyzer
             }
             return map.Count;
         }
-        public void CSVStateCodeJsonDataLoad(string csvSource, string jsonDestination, string sortJson, string key)
+        public void CSVToJsonDataLoad(string csvSource, string jsonDestination, string sortJson, string key)
         {
             StateCensusAnalyser obj = new StateCensusAnalyser();
             string csvData = File.ReadAllText(csvSource);
@@ -81,7 +81,7 @@ namespace CensusAnalyzer
             File.WriteAllText(jsonDestination, stringBuilder.ToString());
             obj.SortingForCSVFile(jsonDestination, sortJson, key);
         }
-        public void CSVStateCodeJsonDataLoadForNum(string csvSource, string jsonDestination, string sortJson, string key)
+        public void CSVToJsonDataLoadForNum(string csvSource, string jsonDestination, string sortJson, string key)
         {
             StateCensusAnalyser obj = new StateCensusAnalyser();
             string csvData = File.ReadAllText(csvSource);
